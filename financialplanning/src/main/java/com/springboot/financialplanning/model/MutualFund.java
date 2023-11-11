@@ -19,7 +19,6 @@ public class MutualFund {
 	private RickFactor riskFactor;
 	private String returnFactor;
 	private String expectedReturns;
-	private boolean isLocking;
 	private String lockingPeriod;
 	private double minInvenstmentAmount;
 	
@@ -83,13 +82,6 @@ public class MutualFund {
 		this.expectedReturns = expectedReturns;
 	}
 
-	public boolean isLocking() {
-		return isLocking;
-	}
-
-	public void setLocking(boolean isLocking) {
-		this.isLocking = isLocking;
-	}
 
 	public String getLockingPeriod() {
 		return lockingPeriod;

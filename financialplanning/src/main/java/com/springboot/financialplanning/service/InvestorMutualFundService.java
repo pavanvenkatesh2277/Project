@@ -8,7 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.springboot.financialplanning.exception.InvalidIdException;
-import com.springboot.financialplanning.model.InvestorInsurance;
 import com.springboot.financialplanning.model.InvestorMutualFund;
 import com.springboot.financialplanning.repository.InvestorMutualFundRepository;
 
@@ -29,7 +28,6 @@ public class InvestorMutualFundService {
 	}
 
 	public List<InvestorMutualFund> getMutualFundDetailsByIds(int iid, int mfid) {
-		// TODO Auto-generated method stub
 		return investorMutualFundRepository.findByInvestorIdAndMutualFundId(iid,mfid);
 	}
 
