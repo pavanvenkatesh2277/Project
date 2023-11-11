@@ -45,7 +45,7 @@ public class InvestorMutualFundController {
 			@RequestBody InvestorMutualFund investorMutualFund) {
 		try {
 			Investor investor = investorService.getByInvestorId(iid);
-			MutualFund mutualFund = mutualFundService.getByid(mfid);
+			MutualFund mutualFund = mutualFundService.getMutualFundById(mfid);
 			investorMutualFund.setInvestor(investor);
 			investorMutualFund.setMutualFund(mutualFund);
 			investorMutualFund = investorMutualFundService.insert(investorMutualFund);
@@ -74,7 +74,7 @@ public class InvestorMutualFundController {
 			/* Fetch Investor object using given iid */
 			Investor investor = investorService.getByInvestorId(iid);
 			/* Fetch MutualFund object using given mfid */
-			MutualFund mutualFund=mutualFundService.getByid(mfid);
+			MutualFund mutualFund=mutualFundService.getMutualFundById(mfid);
 			List<InvestorMutualFund> list= investorMutualFundService.getMutualFundDetailsByIds(iid,mfid);
 			return ResponseEntity.ok().body(list);
 		} catch (InvalidIdException e) {
