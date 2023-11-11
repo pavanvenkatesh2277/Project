@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Company;
-import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.model.ThematicFund;
 import com.springboot.financialplanning.service.CompanyService;
 import com.springboot.financialplanning.service.ThematicFundService;
