@@ -1,10 +1,5 @@
 package com.springboot.financialplanning.model;
 
-/*<<<<<<< HEAD
-public class User {
-
-}
-=======*/
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -101,4 +96,4 @@ public class User implements UserDetails {
 	}
 }
 
->>>>>>> 9016e2a3c5036cfa14870d464c446052c421d212
+
