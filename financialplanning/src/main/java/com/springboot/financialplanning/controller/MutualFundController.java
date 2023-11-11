@@ -30,8 +30,13 @@ public class MutualFundController {
 	public ResponseEntity<?> insertMutualFund(@PathVariable ("cid") int cid,@RequestBody MutualFund mutualFund) {
 			try {
 				
+				/* Fetch company object from db using cid */
 				Company company = companyService.getCompanyById(cid);
+				
+				/* Attach mutualfund to company */
 				mutualFund.setCompany(company);
+				
+				/* Save the mutualfund in the DB */
 				MutualFund savedMutualFund = mutualFundService.insert(mutualFund);
 				return ResponseEntity.ok().body(savedMutualFund);
 			}
