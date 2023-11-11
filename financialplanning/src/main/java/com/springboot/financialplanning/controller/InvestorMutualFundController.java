@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Investor;
 import com.springboot.financialplanning.model.InvestorMutualFund;
+import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.service.InvestorMutualFundService;
 import com.springboot.financialplanning.service.InvestorService;
+import com.springboot.financialplanning.service.MutualFundService;
 
 
 
