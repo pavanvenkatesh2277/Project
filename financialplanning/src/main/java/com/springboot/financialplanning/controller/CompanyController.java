@@ -36,7 +36,8 @@ public class CompanyController {
 	
 	@PostMapping("/add")
 	public Company insertCompany(@RequestBody Company company) {
-		/*save user info in db*/
+		
+		/*save user info in database*/
 		User user=company.getUser();
 		String passwordPlain=user.getPassword();
 		String encodedPassword=passwordEncoder.encode(passwordPlain);

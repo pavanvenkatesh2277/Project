@@ -27,4 +27,8 @@ public class HrService {
 			throw new InvalidIdException("HR id Invalid");
 		return optional.get();
 	}
+
+	public void deleteHr(Hr hr) {
+		hrRepository.delete(hr);
+	}
 }
