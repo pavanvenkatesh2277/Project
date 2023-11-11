@@ -1,5 +1,6 @@
 package com.springboot.financialplanning.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,12 +20,23 @@ public class MutualFundService {
 	public MutualFund insert(MutualFund mutualFund) {
 		return mutualFundRepository.save(mutualFund);
 	}
+	
+	public List<MutualFund> getAllMutualFunds() {
+		List<MutualFund> list = mutualFundRepository.findAll();
+		return list;
+		 
+	}
 
 
-	public MutualFund getByid(int mfid) throws InvalidIdException {
-		Optional<MutualFund> optional = mutualFundRepository.findById(mfid);
+	public MutualFund getMutualFundById(int cid) throws InvalidIdException {
+		Optional<MutualFund> optional = mutualFundRepository.findById(cid);
 		if (!optional.isPresent())
 			throw new InvalidIdException("MutualFund id Invalid");
 		return optional.get();
 	}
+	
+	public void deleteMutualFund(int cid) {
+		mutualFundRepository.deleteById(cid);
+	}
+	
 }
