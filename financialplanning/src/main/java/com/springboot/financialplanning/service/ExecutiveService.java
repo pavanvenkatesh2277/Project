@@ -1,5 +1,6 @@
 package com.springboot.financialplanning.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,21 @@ public class ExecutiveService {
 	public Executive saveExecutive(Executive executive) {
 		return executiveRepository.save(executive);
 	}
+	
+	public List<Executive> getAllExecutives() {
+		List<Executive> list = executiveRepository.findAll();
+		return list;
+		 
+	}
+	public void deleteExecutive(int id) {
+		executiveRepository.deleteById(id);
+	}
+	
 
-	public Executive getById(int uid) throws InvalidIdException {
+	public Executive getExecutiveById(int uid) throws InvalidIdException {
 		Optional<Executive> optional=executiveRepository.findById(uid);
 		if(!optional.isPresent())
-			throw new InvalidIdException("Userid Invalid");
+			throw new InvalidIdException("Executive id  Invalid");
 		return optional.get();
 	}
 
