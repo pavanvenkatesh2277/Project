@@ -46,12 +46,16 @@ public class InvestorMutualFundController {
 		try {
 			/*fetch investor by id*/
 			Investor investor = investorService.getByInvestorId(iid);
+
 			/*fetch mutualfund by id*/
 			MutualFund mutualFund = mutualFundService.getMutualFundById(mfid);
+			
 			/*attach investor to investormutualfund*/
 			investorMutualFund.setInvestor(investor);
+			
 			/*attach mutualfund to investormutualfund*/
 			investorMutualFund.setMutualFund(mutualFund);
+			
 			/*save the investorMutualFund in db */
 			investorMutualFund = investorMutualFundService.insert(investorMutualFund);
 			return ResponseEntity.ok().body(investorMutualFund);
