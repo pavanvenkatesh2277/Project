@@ -14,7 +14,7 @@ import com.springboot.financialplanning.repository.CompanyRepository;
 @Service
 public class CompanyService {
  @Autowired
- CompanyRepository companyRepository;
+ private CompanyRepository companyRepository;
  
  public Company insert(Company company) {
 		return companyRepository.save(company);

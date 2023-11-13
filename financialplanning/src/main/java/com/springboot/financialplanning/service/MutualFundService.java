@@ -15,7 +15,7 @@ import com.springboot.financialplanning.repository.MutualFundRepository;
 @Service
 public class MutualFundService {
 	@Autowired
-	MutualFundRepository mutualFundRepository;
+	private MutualFundRepository mutualFundRepository;
 
 	public MutualFund insert(MutualFund mutualFund) {
 		return mutualFundRepository.save(mutualFund);

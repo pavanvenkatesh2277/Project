@@ -13,7 +13,7 @@ import com.springboot.financialplanning.repository.UserRepository;
 public class UserService implements UserDetailsService {
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 
 	public User insert(User user) {
 		return userRepository.save(user);

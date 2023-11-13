@@ -25,14 +25,14 @@ import com.springboot.financialplanning.service.ExecutiveService;
 import com.springboot.financialplanning.service.UserService;
 
 @RestController
-@RequestMapping("/executive")
+@RequestMapping("/executive") 
 public class ExecutiveController {
 
 	@Autowired
-	ExecutiveService executiveService;
+	private ExecutiveService executiveService;
 
 	@Autowired
-	UserService userService;
+	private UserService userService;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;

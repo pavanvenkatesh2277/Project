@@ -44,10 +44,15 @@ public class InvestorMutualFundController {
 	public ResponseEntity<?> mutualfund(@PathVariable("iid") int iid, @PathVariable("mfid") int mfid,
 			@RequestBody InvestorMutualFund investorMutualFund) {
 		try {
+			/*fetch investor by id*/
 			Investor investor = investorService.getByInvestorId(iid);
-			MutualFund mutualFund = mutualFundService.getByid(mfid);
+			/*fetch mutualfund by id*/
+			MutualFund mutualFund = mutualFundService.getMutualFundById(mfid);
+			/*attach investor to investormutualfund*/
 			investorMutualFund.setInvestor(investor);
+			/*attach mutualfund to investormutualfund*/
 			investorMutualFund.setMutualFund(mutualFund);
+			/*save the investorMutualFund in db */
 			investorMutualFund = investorMutualFundService.insert(investorMutualFund);
 			return ResponseEntity.ok().body(investorMutualFund);
 		} catch (InvalidIdException e) {
@@ -74,7 +79,7 @@ public class InvestorMutualFundController {
 			/* Fetch Investor object using given iid */
 			Investor investor = investorService.getByInvestorId(iid);
 			/* Fetch MutualFund object using given mfid */
-			MutualFund mutualFund=mutualFundService.getByid(mfid);
+			MutualFund mutualFund=mutualFundService.getMutualFundById(mfid);
 			List<InvestorMutualFund> list= investorMutualFundService.getMutualFundDetailsByIds(iid,mfid);
 			return ResponseEntity.ok().body(list);
 		} catch (InvalidIdException e) {

@@ -17,7 +17,7 @@ import com.springboot.financialplanning.repository.InvestorMutualFundRepository;
 public class InvestorMutualFundService {
 
 	@Autowired
-	InvestorMutualFundRepository investorMutualFundRepository;
+	private InvestorMutualFundRepository investorMutualFundRepository;
 	
 	public InvestorMutualFund insert(InvestorMutualFund investorMutualFund) {
 		return investorMutualFundRepository.save(investorMutualFund);

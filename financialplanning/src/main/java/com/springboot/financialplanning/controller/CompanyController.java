@@ -26,10 +26,10 @@ import com.springboot.financialplanning.service.UserService;
 @RequestMapping("/company")
 public class CompanyController {
 	@Autowired
-	CompanyService companyService;
+	private CompanyService companyService;
 	
 	@Autowired
-	UserService userService;
+	private UserService userService;
 	
 	@Autowired
 	private PasswordEncoder passwordEncoder;

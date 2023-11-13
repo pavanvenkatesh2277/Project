@@ -45,8 +45,9 @@ public class HrController {
 		user.setPassword(encodedPassword);
 		
 		user.setRole(Role.HR);
+		/*save user in db*/
 		user=userService.insert(user);
-		
+		/*attach user to hr*/
 		hr.setUser(user);
 		
 		return hrService.insert(hr);

@@ -40,9 +40,11 @@ public class InsuranceController {
 	@PostMapping("/add/{cid}")
 	public ResponseEntity<?> insertInsurance(@PathVariable ("cid") int cid,@RequestBody Insurance insurance) {
 			try {
-				
+				/*fetch company from db by id*/
 				Company company = companyService.getCompanyById(cid);
+				/*attach company to insurance*/
 				insurance.setCompany(company);
+				/*save the savedInsurance in db*/
 				Insurance savedInsurance = insuranceService.insert(insurance);
 				return ResponseEntity.ok().body(savedInsurance);
 			}

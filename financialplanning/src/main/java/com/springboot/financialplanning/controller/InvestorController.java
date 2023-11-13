@@ -49,10 +49,11 @@ public class InvestorController {
 		user.setPassword(encodedPassword);
 		
 		user.setRole(Role.INVESTOR);
+		/*insert user to db*/
 		user=userService.insert(user);
-		
+		/*Attach user to investor*/
 		investor.setUser(user);
-		
+		/*save the investor*/
 		return investorService.insert(investor);
 	}
 	

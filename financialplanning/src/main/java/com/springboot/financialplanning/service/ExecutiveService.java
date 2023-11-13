@@ -14,7 +14,7 @@ import com.springboot.financialplanning.repository.ExecutiveRepository;
 @Service
 public class ExecutiveService {
 	@Autowired
-	ExecutiveRepository executiveRepository;
+	private ExecutiveRepository executiveRepository;
 	
 	public Executive insert(Executive executive) {
 		return executiveRepository.save(executive);
