@@ -3,10 +3,14 @@ package com.springboot.financialplanning.model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+
+import com.enums.InvestmentType;
 
 
 
@@ -16,7 +20,12 @@ public class InvestorMutualFund {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	private LocalDate investmentDate;
-	private Double amountInvested;
+	private Double onetimeAmount;
+	
+	@Enumerated(EnumType.STRING)
+	private InvestmentType investmentType;  
+    private LocalDate sipStartDate;
+    private Double sipAmount;
 	
 	@ManyToOne
 	private Investor investor;
@@ -58,13 +67,38 @@ public class InvestorMutualFund {
 		this.investmentDate = investmentDate;
 	}
 
-	public Double getAmountInvested() {
-		return amountInvested;
+	public Double getOnetimeAmount() {
+		return onetimeAmount;
 	}
 
-	public void setAmountInvested(Double amountInvested) {
-		this.amountInvested = amountInvested;
+	public void setOnetimeAmount(Double onetimeAmount) {
+		this.onetimeAmount = onetimeAmount;
 	}
+
+	public InvestmentType getInvestmentType() {
+		return investmentType;
+	}
+
+	public void setInvestmentType(InvestmentType investmentType) {
+		this.investmentType = investmentType;
+	}
+
+	public LocalDate getSipStartDate() {
+		return sipStartDate;
+	}
+
+	public void setSipStartDate(LocalDate sipStartDate) {
+		this.sipStartDate = sipStartDate;
+	}
+
+	public Double getSipAmount() {
+		return sipAmount;
+	}
+
+	public void setSipAmount(Double sipAmount) {
+		this.sipAmount = sipAmount;
+	}
+
 	
 	
 }

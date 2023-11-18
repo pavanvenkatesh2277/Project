@@ -17,7 +17,7 @@ import com.springboot.financialplanning.service.UserService;
 
 
 @Configuration
-public class SecurityConfig extends WebSecurityConfigurerAdapter {//ioc inversion of controll  give the source code i am override
+public class SecurityConfig extends WebSecurityConfigurerAdapter {//ioc (inversion of controll) give the source code i am override
 
 	@Autowired
 	private UserService userService;
@@ -33,15 +33,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {//ioc inversio
 		http
 		.authorizeRequests()
 		.antMatchers(HttpMethod.GET,"/user/login","/executive/getone/{uid").authenticated()
-		.antMatchers("/executive/add","/thematic/add/{cid}","/insurance/add/{cid}","/mutualfund/add/{iid}/{mfid}","/insurance/add/{iid}/{inid}").permitAll()
+		.antMatchers("/executive/add","/thematicfund/add/{cid}","/insurance/add/{cid}","/investormutualfund/add/{iid}/{mfid}","/investorinsurance/add/{iid}/{inid}").permitAll()
 		.antMatchers("/insurance/all/{cid}","insurance/getall","insurance/getone/{inid}","insurance/delete/{inid}","insurance/delete/{inid}/{cid}","insurance/update/{inid}","insurance/update/{inid}/{cid}").permitAll()
 		.antMatchers("/company/add","company/getone/{cid}").permitAll()
 		.antMatchers("/executive/getone/{uid}").permitAll()
-		.antMatchers("/thematic/add/{iid}/{tid}","/tdall","/thematicdetails/{iid}/{tid}","/deletethematic/{tdid}","/updatethematic/{tdid}").permitAll()
-		.antMatchers("/investor/add","/investor/getone/{iid}").permitAll()
+		.antMatchers("/investorthematicfund/add/{iid}/{tfid}","/tdall","/thematicdetails/{iid}/{tid}","/deletethematic/{tdid}","/search","/updatethematic/{tdid}","/category/{category}").permitAll()
+		.antMatchers("/investor/add","/investor/getone/{iid}","investor/update/{iid}").permitAll()
 		.antMatchers("/hr/add","/hr/getone/{hid}").permitAll()
 		.antMatchers("/salesvp/add","/salesvp/getone/{sid}").permitAll()
-		.antMatchers("/mutualfund/add/{cid}","/mutualfunddetails/{iid}/{mfid}","/mdall","/delete/{mdid}","/updatemutualfund/{mdid}").permitAll()
+		.antMatchers("/mutualfund/add/{cid}","/investormutualfunddetails/{iid}/{mfid}","/by-company","/by-category","/searchByCategory","/mdall","/delete/{mdid}","/category/{category}","/updatemutualfund/{mdid}","/filter").permitAll()
+		.antMatchers("/searchByCompanyName","/searchByFundType").permitAll()
 		.anyRequest().authenticated()
 		.and().httpBasic()
 		.and()

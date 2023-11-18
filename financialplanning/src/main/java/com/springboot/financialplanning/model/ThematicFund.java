@@ -1,11 +1,14 @@
 package com.springboot.financialplanning.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.enums.Category;
 import com.enums.RickFactor;
 
 
@@ -15,14 +18,17 @@ public class ThematicFund {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String name;
-	private String category;
-	private double fundBalance;
+	private String fundName;
+	@Enumerated(EnumType.STRING)
+	private Category category;
+	private double fundSize;
+	@Enumerated(EnumType.STRING)
 	private RickFactor riskFactor;
 	private String returnFactor;
 	private String expectedReturns;
 	private String lockingPeriod;
 	private double minInvenstmentAmount;
+	private double navPrice;
 	
 	@ManyToOne
 	private Company company;
@@ -33,23 +39,26 @@ public class ThematicFund {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	
+	public String getFundName() {
+		return fundName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setFundName(String fundName) {
+		this.fundName = fundName;
 	}
-	public String getCategory() {
+	
+	
+	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public double getFundBalance() {
-		return fundBalance;
+	public double getFundSize() {
+		return fundSize;
 	}
-	public void setFundBalance(double fundBalance) {
-		this.fundBalance = fundBalance;
+	public void setFundSize(double fundSize) {
+		this.fundSize = fundSize;
 	}
 	public RickFactor getRiskFactor() {
 		return riskFactor;
@@ -86,6 +95,12 @@ public class ThematicFund {
 	}
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+	public double getNavPrice() {
+		return navPrice;
+	}
+	public void setNavPrice(double navPrice) {
+		this.navPrice = navPrice;
 	}
 
 	

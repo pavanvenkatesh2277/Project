@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.enums.Category;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.repository.MutualFundRepository;
@@ -38,5 +39,21 @@ public class MutualFundService {
 	public void deleteMutualFund(int cid) {
 		mutualFundRepository.deleteById(cid);
 	}
+
+	public List<MutualFund> getMutualFundsByCategory(Category category) {
+		return mutualFundRepository.findByCategory(category);
+	}
+
+	public List<MutualFund> findByCompany(String Name) {
 	
+		return mutualFundRepository.findByCompany(Name);
+	}
+
+	public List<MutualFund> findByFundType(String fundType) {
+
+		return mutualFundRepository.findByFundType(fundType);
+	}
+	public List<MutualFund> findByCategory(Category category) {
+        return mutualFundRepository.findByCategory(category);
+    }
 }

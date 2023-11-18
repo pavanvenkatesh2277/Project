@@ -1,5 +1,7 @@
 package com.springboot.financialplanning.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,8 @@ public class Executive {
 	private String name;
 	private String email;
 	private String city;
+	private String contact;
+	private LocalDate dob;
 
 	@OneToOne
 	private User user;
@@ -55,6 +59,22 @@ public class Executive {
 
 	public void setCity(String city) {
 		this.city = city;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+
+	public LocalDate getDob() {
+		return dob;
+	}
+
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
 	}
 
 

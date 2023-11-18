@@ -11,8 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.enums.Category;
+import com.springboot.financialplanning.dto.MutualFundDto;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Company;
 import com.springboot.financialplanning.model.MutualFund;
@@ -81,17 +84,27 @@ public class MutualFundController {
 	
 	@PutMapping("/update/{cid}")
 	public ResponseEntity<?> updateMutualFund(@PathVariable("cid") int cid, 
-			@RequestBody MutualFund newmutualFund) {
+			@RequestBody MutualFundDto newmutualFund) {
 		try {
 			MutualFund mutualFund = mutualFundService.getMutualFundById(cid);
-			if(newmutualFund.getName() != null)
-				mutualFund.setName(newmutualFund.getName());
+			if(newmutualFund.getFundName()!= null)
+				mutualFund.setFundName(newmutualFund.getFundName());
 			if(newmutualFund.getCategory() != null)
 				mutualFund.setCategory(newmutualFund.getCategory());
-			if(newmutualFund.getFundBalance() != 0)
-				mutualFund.setFundBalance(newmutualFund.getFundBalance());
+			if(newmutualFund.getFundSize() != 0)
+				mutualFund.setFundSize(newmutualFund.getFundSize());
 			if(newmutualFund.getReturnFactor() != null)
 				mutualFund.setReturnFactor(newmutualFund.getReturnFactor());
+			if(newmutualFund.getExpectedReturns() != null)
+				mutualFund.setExpectedReturns(newmutualFund.getExpectedReturns());
+			if(newmutualFund.getRiskFactor() != null)
+				mutualFund.setRiskFactor(newmutualFund.getRiskFactor());
+			if(newmutualFund.getLockingPeriod() != null)
+				mutualFund.setLockingPeriod(newmutualFund.getLockingPeriod());
+			if(newmutualFund.getMinInvenstmentAmount() != 0)
+				mutualFund.setMinInvenstmentAmount(newmutualFund.getMinInvenstmentAmount());
+			if(newmutualFund.getNavPrice() != 0)
+				mutualFund.setNavPrice(newmutualFund.getNavPrice());
 			
 			mutualFund = mutualFundService.insert(mutualFund);
 			return ResponseEntity.ok().body(mutualFund);
@@ -99,5 +112,11 @@ public class MutualFundController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
+	
+	 @GetMapping("/category/{category}")
+	    public ResponseEntity<?> getMutualFundsByCategory(@PathVariable("category") Category category) {
+	        List<MutualFund> mutualFunds = mutualFundService.getMutualFundsByCategory(category);
+			return ResponseEntity.ok().body(mutualFunds);
+	    }
 }
 

@@ -1,11 +1,15 @@
 package com.springboot.financialplanning.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.enums.Category;
+import com.springboot.financialplanning.exception.InvalidCategoryException;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.ThematicFund;
 import com.springboot.financialplanning.repository.ThematicFundRepository;
@@ -14,6 +18,7 @@ import com.springboot.financialplanning.repository.ThematicFundRepository;
 
 @Service
 public class ThematicFundService {
+	private List<ThematicFund> thematicFunds = new ArrayList<>();
 
 	@Autowired
 	private ThematicFundRepository thematicFundRepository;
@@ -22,8 +27,8 @@ public class ThematicFundService {
 		return thematicFundRepository.save(thematicFund);
 	}
 
-	public ThematicFund getByid(int tid) throws InvalidIdException {
-		Optional<ThematicFund> optional = thematicFundRepository.findById(tid);
+	public ThematicFund getByid(int tfid) throws InvalidIdException {
+		Optional<ThematicFund> optional = thematicFundRepository.findById(tfid);
 		if (!optional.isPresent())
 			throw new InvalidIdException("ThematicFund id Invalid");
 		return optional.get();
@@ -46,6 +51,43 @@ public class ThematicFundService {
 	public void deleteThematicFund(int cid) {
 		thematicFundRepository.deleteById(cid);
 	}
-	
 
+//	public List<ThematicFund> getThematicFundByCategory(String category) {
+//		return thematicFundRepository.findByCategory(category);
+//	}
+	
+	 public List<ThematicFund> getThematicFundByCategory(Category category) throws InvalidCategoryException {
+	        List<ThematicFund> thematicFunds = getAllThematicFunds();
+
+	        List<ThematicFund> filteredByCategory = thematicFunds.stream()
+	            .filter(tf -> tf.getCategory().equals(category))
+	            .collect(Collectors.toList());
+	        if (filteredByCategory.isEmpty()) {
+	            throw new InvalidCategoryException("No thematic funds found for category: " + category);
+	        }
+
+	        return filteredByCategory;
+	    }
+//
+//	public List<ThematicFund> search(String keyword) {
+//		
+//		 return thematicFunds.stream()
+//	                .filter(thematicFunds -> thematicFunds.getName().toLowerCase().contains(keyword.toLowerCase()))
+//	                .collect(Collectors.toList());
+//	}
+
+	
+	public List<ThematicFund> findByFundType(String fundType) {
+        return thematicFundRepository.findByFundType(fundType);
+    }
+	
+	
+	 public List<ThematicFund> findByCategory(Category category) {
+	        return thematicFundRepository.findByCategory(category);
+	    }
+
+	public List<ThematicFund> findByCompany(String Name) {
+		
+		return thematicFundRepository.findByCompany(Name);
+	}
 }

@@ -36,7 +36,7 @@ public class InvestorInsuranceController {
 	private InvestorInsuranceService investorInsuranceService;
 	
 	/* Insert InvestorInsurance Association */
-	@PostMapping("/insurance/add/{iid}/{inid}")
+	@PostMapping("/investorinsurance/add/{iid}/{inid}")
 	public ResponseEntity<?> insurance(@PathVariable("iid") int iid, @PathVariable("inid") int inid,
 			@RequestBody InvestorInsurance investorInsurance) {
 		try {
@@ -44,6 +44,23 @@ public class InvestorInsuranceController {
 			Insurance insurance = insuranceService.getByid(inid);
 			investorInsurance.setInvestor(investor);
 			investorInsurance.setInsurance(insurance);
+			
+			switch (investorInsurance.getInvestmentType()) {
+            case MONTHLY:
+            	investorInsurance.setMonthlyInvestmentDate(investorInsurance.getMonthlyInvestmentDate());
+            	investorInsurance.setMonthlyAmount(investorInsurance.getMonthlyAmount());
+              
+                break;
+            case YEARLY:
+            	investorInsurance.setInvestmentDate(investorInsurance.getInvestmentDate());
+            	investorInsurance.setYearlyAmount(investorInsurance.getYearlyAmount());
+             
+                break;
+            default:
+                return ResponseEntity.badRequest().body("Invalid investment type selected.");
+        }
+			
+			
 			investorInsurance = investorInsuranceService.insert(investorInsurance);
 			return ResponseEntity.ok().body(investorInsurance);
 		} catch (InvalidIdException e) {
@@ -62,7 +79,7 @@ public class InvestorInsuranceController {
 	}
 	
 	/* Get All InvestorInsurance Details By Id */
-	@GetMapping("/insurancedetails/{iid}/{inid}")
+	@GetMapping("/investorinsurancedetails/{iid}/{inid}")
 	public ResponseEntity<?> getInsuranceDetails(@PathVariable("iid") int iid,
 			@PathVariable("inid")int inid) {
 		

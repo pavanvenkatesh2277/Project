@@ -2,62 +2,80 @@ package com.springboot.financialplanning.dto;
 
 import java.time.LocalDate;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.enums.Category;
 
 public class InsuranceDto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	private String name;
-	private String category;
-	private LocalDate startdate;
-	private LocalDate enddate;
-	private double premimum;
-	private int policytenure;
+	private String policyName;
+	@Enumerated(EnumType.STRING)
+	private Category category;
+	private double premium;
+	private int policyTenure;
+	private String claimSettlement;
+	private String description;
+	private String ageCreteria;
+	private double coverage;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getPolicyName() {
+		return policyName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setPolicyName(String policyName) {
+		this.policyName = policyName;
 	}
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
 	}
-	public LocalDate getStartdate() {
-		return startdate;
+	public double getPremium() {
+		return premium;
 	}
-	public void setStartdate(LocalDate startdate) {
-		this.startdate = startdate;
+	public void setPremium(double premium) {
+		this.premium = premium;
 	}
-	public LocalDate getEnddate() {
-		return enddate;
+	public int getPolicyTenure() {
+		return policyTenure;
 	}
-	public void setEnddate(LocalDate enddate) {
-		this.enddate = enddate;
+	public void setPolicyTenure(int policyTenure) {
+		this.policyTenure = policyTenure;
 	}
-	public double getPremimum() {
-		return premimum;
+	public String getClaimSettlement() {
+		return claimSettlement;
 	}
-	public void setPremimum(double premimum) {
-		this.premimum = premimum;
+	public void setClaimSettlement(String claimSettlement) {
+		this.claimSettlement = claimSettlement;
 	}
-	public int getPolicytenure() {
-		return policytenure;
+	public String getDescription() {
+		return description;
 	}
-	public void setPolicytenure(int policytenure) {
-		this.policytenure = policytenure;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-	
+	public String getAgeCreteria() {
+		return ageCreteria;
+	}
+	public void setAgeCreteria(String ageCreteria) {
+		this.ageCreteria = ageCreteria;
+	}
+	public double getCoverage() {
+		return coverage;
+	}
+	public void setCoverage(double coverage) {
+		this.coverage = coverage;
+	}
 	
 }
