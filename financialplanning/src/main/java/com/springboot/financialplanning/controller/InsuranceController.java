@@ -134,18 +134,22 @@ public class InsuranceController {
 			//validate id
 			Insurance oldinsurance = insuranceService.getByid(inid);
 
-			if(newInsurance.getName() != null) 
-				oldinsurance.setName(newInsurance.getName());
+			if(newInsurance.getPolicyName() != null) 
+				oldinsurance.setPolicyName(newInsurance.getPolicyName());
 			if(newInsurance.getCategory() != null) 
 				oldinsurance.setCategory(newInsurance.getCategory());
-			if(newInsurance.getStartdate() != null) 
-				oldinsurance.setStartdate(newInsurance.getStartdate());
-			if(newInsurance.getEnddate() != null) 
-				oldinsurance.setEnddate(newInsurance.getEnddate());
-			if(newInsurance.getPremimum()!= 0) 
-				oldinsurance.setPremimum(newInsurance.getPremimum());
-			if(newInsurance.getPolicytenure() != 0) 
-				oldinsurance.setPolicytenure(newInsurance.getPolicytenure());
+			if(newInsurance.getDescription() != null) 
+				oldinsurance.setDescription(newInsurance.getDescription());
+			if(newInsurance.getClaimSettlement() != null) 
+				oldinsurance.setClaimSettlement(newInsurance.getClaimSettlement());
+			if(newInsurance.getPremium()!= 0) 
+				oldinsurance.setPremium(newInsurance.getPremium());
+			if(newInsurance.getPolicyTenure() != 0) 
+				oldinsurance.setPolicyTenure(newInsurance.getPolicyTenure());
+			if(newInsurance.getAgeCreteria() != null) 
+				oldinsurance.setAgeCreteria(newInsurance.getAgeCreteria());
+			if(newInsurance.getCoverage() != 0) 
+				oldinsurance.setCoverage(newInsurance.getCoverage());
 			 
 			oldinsurance = insuranceService.insert(oldinsurance); 
 			return ResponseEntity.ok().body(oldinsurance);
@@ -155,35 +159,35 @@ public class InsuranceController {
 		}
 	}
 	
-	/*Update Insurance By InsuranceId and CompanyId */
-	@PutMapping("/update/{inid}/{cid}")  //:update: which record to update?   give me new value for update
-	public ResponseEntity<?> updateInsurance(@PathVariable("inid") int inid,
-			                                 @PathVariable("cid")int cid,
-							                 @RequestBody InsuranceDto newInsurance) {
-		try {
-			//validate id
-			Company company=companyService.getCompanyById(cid);
-			Insurance oldinsurance = insuranceService.getByid(inid);
-
-			if(newInsurance.getName() != null) 
-				oldinsurance.setName(newInsurance.getName());
-			if(newInsurance.getCategory() != null) 
-				oldinsurance.setCategory(newInsurance.getCategory());
-			if(newInsurance.getStartdate() != null) 
-				oldinsurance.setStartdate(newInsurance.getStartdate());
-			if(newInsurance.getEnddate() != null) 
-				oldinsurance.setEnddate(newInsurance.getEnddate());
-			if(newInsurance.getPremimum()!= 0) 
-				oldinsurance.setPremimum(newInsurance.getPremimum());
-			if(newInsurance.getPolicytenure() != 0) 
-				oldinsurance.setPolicytenure(newInsurance.getPolicytenure());
-			 
-			oldinsurance = insuranceService.insert(oldinsurance); 
-			return ResponseEntity.ok().body(oldinsurance);
-
-		} catch (InvalidIdException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-	}
+//	/*Update Insurance By InsuranceId and CompanyId */
+//	@PutMapping("/update/{inid}/{cid}")  //:update: which record to update?   give me new value for update
+//	public ResponseEntity<?> updateInsurance(@PathVariable("inid") int inid,
+//			                                 @PathVariable("cid")int cid,
+//							                 @RequestBody InsuranceDto newInsurance) {
+//		try {
+//			//validate id
+//			Company company=companyService.getCompanyById(cid);
+//			Insurance oldinsurance = insuranceService.getByid(inid);
+//
+//			if(newInsurance.getName() != null) 
+//				oldinsurance.setName(newInsurance.getName());
+//			if(newInsurance.getCategory() != null) 
+//				oldinsurance.setCategory(newInsurance.getCategory());
+//			if(newInsurance.getStartdate() != null) 
+//				oldinsurance.setStartdate(newInsurance.getStartdate());
+//			if(newInsurance.getEnddate() != null) 
+//				oldinsurance.setEnddate(newInsurance.getEnddate());
+//			if(newInsurance.getPremimum()!= 0) 
+//				oldinsurance.setPremimum(newInsurance.getPremimum());
+//			if(newInsurance.getPolicytenure() != 0) 
+//				oldinsurance.setPolicytenure(newInsurance.getPolicytenure());
+//			 
+//			oldinsurance = insuranceService.insert(oldinsurance); 
+//			return ResponseEntity.ok().body(oldinsurance);
+//
+//		} catch (InvalidIdException e) {
+//			return ResponseEntity.badRequest().body(e.getMessage());
+//		}
+//	}
 	
 }

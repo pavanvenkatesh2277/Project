@@ -40,7 +40,7 @@ public class InvestorMutualFundController {
 	
 	
 	/* Insert InvestorMutualFund Details By InvestorId and MutualFundId */
-	@PostMapping("/mutualfund/add/{iid}/{mfid}")
+	@PostMapping("/investormutualfund/add/{iid}/{mfid}")
 	public ResponseEntity<?> mutualfund(@PathVariable("iid") int iid, @PathVariable("mfid") int mfid,
 			@RequestBody InvestorMutualFund investorMutualFund) {
 		try {
@@ -56,6 +56,20 @@ public class InvestorMutualFundController {
 			/*attach mutualfund to investormutualfund*/
 			investorMutualFund.setMutualFund(mutualFund);
 			
+			 switch (investorMutualFund.getInvestmentType()) {
+	            case SIP:
+	                investorMutualFund.setSipStartDate(investorMutualFund.getSipStartDate());
+	                investorMutualFund.setSipAmount(investorMutualFund.getSipAmount());
+	                // Save the investorMutualFund for SIP
+	                break;
+	            case ONE_TIME:
+	                investorMutualFund.setInvestmentDate(investorMutualFund.getInvestmentDate());
+	                investorMutualFund.setOnetimeAmount(investorMutualFund.getOnetimeAmount());
+	                // Save the investorMutualFund for one-time investment
+	                break;
+	            default:
+	                return ResponseEntity.badRequest().body("Invalid investment type selected.");
+	        }
 			/*save the investorMutualFund in db */
 			investorMutualFund = investorMutualFundService.insert(investorMutualFund);
 			return ResponseEntity.ok().body(investorMutualFund);
@@ -65,7 +79,7 @@ public class InvestorMutualFundController {
 	}
 	
 	/* Get All MutualFundDetails Done by Investor*/
-	@GetMapping("/mdall")
+	@GetMapping("/investormutualfunddetails/all")
 	public List<InvestorMutualFund> getAllMutualFund(
 			@RequestParam(value="page",required = false,defaultValue = "0") Integer page,
 			@RequestParam(value="size",required = false,defaultValue = "1000000") Integer size) {
@@ -75,7 +89,7 @@ public class InvestorMutualFundController {
 	}
 	
 	/* Get All InvestorMutualFund Details By Id */
-	@GetMapping("/mutualfunddetails/{iid}/{mfid}")
+	@GetMapping("/investormutualfunddetails/{iid}/{mfid}")
 	public ResponseEntity<?> getMutualFundDetails(@PathVariable("iid") int iid,
 			@PathVariable("mfid")int mfid) {
 		
@@ -110,23 +124,23 @@ public class InvestorMutualFundController {
 	}
 	
 	/* Update InvestorMutualFund By Id */
-	@PutMapping("/updatemutualfund/{mdid}")  //:update: which record to update?   give me new value for update
-	public ResponseEntity<?> updateInvestorMutualFund(@PathVariable("mdid") int mdid,
-							@RequestBody InvestorMutualFundDto newInvestorMutualFund) {
-		try {
-			//validate id
-			InvestorMutualFund oldInvestorMutualFund = investorMutualFundService.getByInvestorMutualFundId(mdid);
-			if(newInvestorMutualFund.getAmountInvested() != null)
-				oldInvestorMutualFund.setAmountInvested (newInvestorMutualFund.getAmountInvested());
-
-			 
-			oldInvestorMutualFund = investorMutualFundService.insert(oldInvestorMutualFund); 
-			return ResponseEntity.ok().body(oldInvestorMutualFund);
-
-		} catch (InvalidIdException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-	}
-
+//	@PutMapping("/updatemutualfund/{mdid}")  //:update: which record to update?   give me new value for update
+//	public ResponseEntity<?> updateInvestorMutualFund(@PathVariable("mdid") int mdid,
+//							@RequestBody InvestorMutualFundDto newInvestorMutualFund) {
+//		try {
+//			//validate id
+//			InvestorMutualFund oldInvestorMutualFund = investorMutualFundService.getByInvestorMutualFundId(mdid);
+//			if(newInvestorMutualFund.getAmountInvested() != null)
+//				oldInvestorMutualFund.setAmountInvested (newInvestorMutualFund.getAmountInvested());
+//
+//			 
+//			oldInvestorMutualFund = investorMutualFundService.insert(oldInvestorMutualFund); 
+//			return ResponseEntity.ok().body(oldInvestorMutualFund);
+//
+//		} catch (InvalidIdException e) {
+//			return ResponseEntity.badRequest().body(e.getMessage());
+//		}
+//	}
+//
 }
 

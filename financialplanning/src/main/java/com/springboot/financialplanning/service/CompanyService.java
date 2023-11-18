@@ -39,5 +39,9 @@ public class CompanyService {
 	public void deleteCompany(int id) {
 		companyRepository.deleteById(id);
 	}
+//	public void onboardCompany(int companyId) throws InvalidIdException {
+//		Company company = getCompanyById(companyId);
+//		 saveCompany(company);
+//	}
 	
 }

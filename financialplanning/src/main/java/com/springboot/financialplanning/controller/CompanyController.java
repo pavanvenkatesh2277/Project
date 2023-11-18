@@ -43,6 +43,7 @@ public class CompanyController {
 		String encodedPassword=passwordEncoder.encode(passwordPlain);
 		user.setPassword(encodedPassword);
 		
+		 
 		user.setRole(Role.COMPANY);
 		user=userService.insert(user);
 		

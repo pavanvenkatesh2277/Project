@@ -15,6 +15,8 @@ public class Company {
 	private String name; 
 	private String email;
 	private String fundtype;
+	private String address;
+	private String contact;
 
 	@OneToOne
 	private User user;
@@ -58,6 +60,22 @@ public class Company {
 
 	public void setFundtype(String fundtype) {
 		this.fundtype = fundtype;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getContact() {
+		return contact;
+	}
+
+	public void setContact(String contact) {
+		this.contact = contact;
 	}
 
 

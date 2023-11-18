@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.enums.Category;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Insurance;
 import com.springboot.financialplanning.model.MutualFund;
@@ -38,6 +39,15 @@ public class InsuranceService {
 	public void deleteInsurance(Insurance insurance) {
 		insuranceRepository.delete(insurance);
 		
+	}
+	 public List<Insurance> findByFundType(String fundType) {
+	        return insuranceRepository.findByFundType(fundType);
+	    }
+	 public List<Insurance> findByCategory(Category category) {
+	        return insuranceRepository.findByCategory(category);
+	    }
+	public List<Insurance> findByCompany(String Name) {
+		return insuranceRepository.findByCompany(Name);
 	}
 	
 }

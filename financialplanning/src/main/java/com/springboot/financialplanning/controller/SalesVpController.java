@@ -14,6 +14,7 @@ import com.enums.Role;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.SalesVp;
 import com.springboot.financialplanning.model.User;
+import com.springboot.financialplanning.service.CompanyService;
 import com.springboot.financialplanning.service.SalesVpService;
 import com.springboot.financialplanning.service.UserService;
 
@@ -32,6 +33,9 @@ public class SalesVpController {
 	
 	@Autowired
 	private SalesVpService salesVpService;
+	
+	@Autowired
+	private CompanyService companyService;
 	
 	@PostMapping("/add")
 	public SalesVp insertSalesVp(@RequestBody SalesVp salesVp) {
@@ -60,5 +64,17 @@ public class SalesVpController {
 		}
 		
 	}  
+	
+//	@PostMapping("/onboard/{cid}")
+//	public ResponseEntity<String> onboardCompany(
+//           
+//            @PathVariable("companyId") int companyId) {
+//        try {
+//            companyService.onboardCompany(companyId);
+//            return ResponseEntity.ok("Company with ID: " + companyId + " has been onboarded  " );
+//        } catch (InvalidIdException e) {
+//            return ResponseEntity.badRequest().body(e.getMessage());
+//        }
+//    }
 
 }

@@ -98,7 +98,7 @@ public class InvestorController {
 	}
 	
 	/* Update Investor By Id */
-	@PutMapping("/update/{id}")  //:update: which record to update?   give me new value for update
+	@PutMapping("/update/{iid}")  //:update: which record to update?   give me new value for update
 	public ResponseEntity<?> updateInvestor(@PathVariable("iid") int iid,
 							@RequestBody InvestorDto newInvestor) {
 		try {
