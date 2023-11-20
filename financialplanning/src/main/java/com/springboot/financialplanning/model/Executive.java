@@ -17,6 +17,8 @@ public class Executive {
 	private String city;
 	private String contact;
 	private LocalDate dob;
+	private String username;
+	private String password;
 
 	@OneToOne
 	private User user;
@@ -75,6 +77,22 @@ public class Executive {
 
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

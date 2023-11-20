@@ -28,13 +28,13 @@ public class ExecutiveService {
 		return list;
 		 
 	}
-	public void deleteExecutive(int id) {
-		executiveRepository.deleteById(id);
+	public void deleteExecutive(int eid) {
+		executiveRepository.deleteById(eid);
 	}
 	
 
-	public Executive getExecutiveById(int uid) throws InvalidIdException {
-		Optional<Executive> optional=executiveRepository.findById(uid);
+	public Executive getExecutiveById(int eid) throws InvalidIdException {
+		Optional<Executive> optional=executiveRepository.findById(eid);
 		if(!optional.isPresent())
 			throw new InvalidIdException("Executive id  Invalid");
 		return optional.get();

@@ -2,18 +2,12 @@ package com.springboot.financialplanning.dto;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 import com.enums.Category;
 import com.enums.RickFactor;
 
 public class MutualFundDto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	
 	private String fundName;
 	@Enumerated(EnumType.STRING)
 	private Category category;
@@ -25,12 +19,7 @@ public class MutualFundDto {
 	private String lockingPeriod;
 	private double minInvenstmentAmount;
 	private double navPrice;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getFundName() {
 		return fundName;
 	}

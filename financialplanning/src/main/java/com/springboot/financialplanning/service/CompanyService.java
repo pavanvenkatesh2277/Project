@@ -36,8 +36,8 @@ public class CompanyService {
 		return optional.get();
 	}
 	
-	public void deleteCompany(int id) {
-		companyRepository.deleteById(id);
+	public void deleteCompany(int cid) {
+		companyRepository.deleteById(cid);
 	}
 //	public void onboardCompany(int companyId) throws InvalidIdException {
 //		Company company = getCompanyById(companyId);

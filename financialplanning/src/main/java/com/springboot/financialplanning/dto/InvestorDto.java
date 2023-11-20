@@ -1,22 +1,18 @@
 package com.springboot.financialplanning.dto;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.time.LocalDate;
 
 public class InvestorDto {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	
 	private String name;
 	private String email;
 	private String city;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private LocalDate dob;
+	private String pancardNumber;
+	private String gender;
+	private String contactNumber;
+	
+	
 	public String getName() {
 		return name;
 	}
@@ -34,6 +30,30 @@ public class InvestorDto {
 	}
 	public void setCity(String city) {
 		this.city = city;
+	}
+	public LocalDate getDob() {
+		return dob;
+	}
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
+	public String getPancardNumber() {
+		return pancardNumber;
+	}
+	public void setPancardNumber(String pancardNumber) {
+		this.pancardNumber = pancardNumber;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 	
 	

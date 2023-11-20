@@ -109,7 +109,16 @@ public class InvestorController {
 			if(newInvestor.getName() != null) 
 				oldInvestor.setName(newInvestor.getName()); 
 			if(newInvestor.getEmail() != null) 
-				oldInvestor.setEmail(newInvestor.getEmail()); 
+				oldInvestor.setEmail(newInvestor.getEmail());
+			if(newInvestor.getDob() != null) 
+				oldInvestor.setDob(newInvestor.getDob());
+			if(newInvestor.getGender() != null) 
+				oldInvestor.setGender(newInvestor.getGender());
+			if(newInvestor.getContactNumber() != null) 
+				oldInvestor.setContactNumber(newInvestor.getContactNumber());
+			if(newInvestor.getPancardNumber() != null) 
+				oldInvestor.setPancardNumber(newInvestor.getPancardNumber());
+			
 			 
 			oldInvestor = investorService.insert(oldInvestor); 
 			return ResponseEntity.ok().body(oldInvestor);

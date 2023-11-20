@@ -1,19 +1,13 @@
 package com.springboot.financialplanning.dto;
 
-import java.time.LocalDate;
-
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 import com.enums.Category;
 
 public class InsuranceDto {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	
 	private String policyName;
 	@Enumerated(EnumType.STRING)
 	private Category category;
@@ -23,12 +17,7 @@ public class InsuranceDto {
 	private String description;
 	private String ageCreteria;
 	private double coverage;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	
 	public String getPolicyName() {
 		return policyName;
 	}

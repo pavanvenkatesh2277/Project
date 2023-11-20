@@ -35,7 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {//ioc (inversi
 		.antMatchers(HttpMethod.GET,"/user/login","/executive/getone/{uid").authenticated()
 		.antMatchers("/executive/add","/thematicfund/add/{cid}","/insurance/add/{cid}","/investormutualfund/add/{iid}/{mfid}","/investorinsurance/add/{iid}/{inid}").permitAll()
 		.antMatchers("/insurance/all/{cid}","insurance/getall","insurance/getone/{inid}","insurance/delete/{inid}","insurance/delete/{inid}/{cid}","insurance/update/{inid}","insurance/update/{inid}/{cid}").permitAll()
-		.antMatchers("/company/add","company/getone/{cid}").permitAll()
+		.antMatchers("/company/add","company/getone/{cid}","/company/update/{cid}").permitAll()
 		.antMatchers("/executive/getone/{uid}").permitAll()
 		.antMatchers("/investorthematicfund/add/{iid}/{tfid}","/tdall","/thematicdetails/{iid}/{tid}","/deletethematic/{tdid}","/search","/updatethematic/{tdid}","/category/{category}").permitAll()
 		.antMatchers("/investor/add","/investor/getone/{iid}","investor/update/{iid}").permitAll()

@@ -25,7 +25,7 @@ import com.springboot.financialplanning.service.ExecutiveService;
 import com.springboot.financialplanning.service.UserService;
 
 @RestController
-@RequestMapping("/executive") 
+@RequestMapping("/executive")
 public class ExecutiveController {
 
 	@Autowired
@@ -59,44 +59,62 @@ public class ExecutiveController {
 		return list;
 	}
 
-	@GetMapping("/one/{id}")
-	public ResponseEntity<?> getExecutiveById(@PathVariable("id") int id) {
+	@GetMapping("/one/{eid}")
+	public ResponseEntity<?> getExecutiveById(@PathVariable("eid") int eid) {
 		try {
-			Executive executive = executiveService.getExecutiveById(id);
-			return ResponseEntity.ok().body(executive);
-		} catch (InvalidIdException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-	}
-	
-	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<?> deleteExecutive(@PathVariable("id") int id) {
-		try {
-			Executive executive = executiveService.getExecutiveById(id);
-			executiveService.deleteExecutive(executive.getId());
-			return ResponseEntity.ok().body("executive Record deleted");
-		} catch (InvalidIdException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
-	}
-	
-	@PutMapping("/update/{id}")
-	public ResponseEntity<?> updateExecutive(@PathVariable("id") int id, 
-			@RequestBody Executive newexecutive) {
-		try {
-			Executive executive = executiveService.getExecutiveById(id);
-			if(newexecutive.getName() != null)
-				executive.setName(newexecutive.getName());
-			if(newexecutive.getEmail() != null)
-				executive.setEmail(newexecutive.getEmail());
-			if(newexecutive.getCity() != null)
-				executive.setCity(newexecutive.getCity());
-			
-				executive = executiveService.insert(executive);
+			Executive executive = executiveService.getExecutiveById(eid);
 			return ResponseEntity.ok().body(executive);
 		} catch (InvalidIdException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
 
+	@DeleteMapping("/delete/{eid}")
+	public ResponseEntity<?> deleteExecutive(@PathVariable("eid") int eid) {
+		try {
+			Executive executive = executiveService.getExecutiveById(eid);
+			executiveService.deleteExecutive(executive.getId());
+			return ResponseEntity.ok().body("executive Record deleted");
+		} catch (InvalidIdException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+
+	@PutMapping("/update/{eid}")
+	public ResponseEntity<?> updateExecutive(@PathVariable("eid") int eid, 
+			@RequestBody Executive newexecutive) {
+		try {
+			Executive executive = executiveService.getExecutiveById(eid);
+			if(newexecutive.getName() != null)
+				executive.setName(newexecutive.getName());
+			if(newexecutive.getEmail() != null)
+				executive.setEmail(newexecutive.getEmail());
+			if(newexecutive.getCity() != null)
+				executive.setCity(newexecutive.getCity());
+			if(newexecutive.getDob() != null)
+				executive.setDob(newexecutive.getDob());
+			if(newexecutive.getContact() != null)
+				executive.setContact(newexecutive.getContact());
+			
+			 User user = executive.getUser(); // Access the User object within Company
+	            
+	            if (user != null) {
+	                if (newexecutive.getUsername() != null) {
+	                    user.setUsername(newexecutive.getUsername());
+	                }
+	                if (newexecutive.getPassword() != null) {
+	                    String encodedPassword = passwordEncoder.encode(newexecutive.getPassword());
+	                    user.setPassword(encodedPassword);
+	                }
+	                
+			
+				executive = executiveService.insert(executive);
+			return ResponseEntity.ok().body(executive);
+		} 
+		}catch (InvalidIdException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+		return ResponseEntity.badRequest().body("Empty field");	
+
+}
 }

@@ -1,22 +1,15 @@
 package com.springboot.financialplanning.dto;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import java.time.LocalDate;
 
 public class ExecutiveDto {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	
 	private String name;
 	private String email;
 	private String city;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	private String contact;
+	private LocalDate dob;
+	
 	public String getName() {
 		return name;
 	}
@@ -35,5 +28,18 @@ public class ExecutiveDto {
 	public void setCity(String city) {
 		this.city = city;
 	}
+	public String getContact() {
+		return contact;
+	}
+	public void setContact(String contact) {
+		this.contact = contact;
+	}
+	public LocalDate getDob() {
+		return dob;
+	}
+	public void setDob(LocalDate dob) {
+		this.dob = dob;
+	}
 
+	
 }
