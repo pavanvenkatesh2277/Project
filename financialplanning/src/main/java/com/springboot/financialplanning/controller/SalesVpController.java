@@ -6,12 +6,14 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.enums.Role;
 import com.springboot.financialplanning.exception.InvalidIdException;
+import com.springboot.financialplanning.model.Company;
 import com.springboot.financialplanning.model.SalesVp;
 import com.springboot.financialplanning.model.User;
 import com.springboot.financialplanning.service.CompanyService;
@@ -64,6 +66,24 @@ public class SalesVpController {
 		}
 		
 	}  
+	@PutMapping("/update/{id}")
+	public ResponseEntity<?> updateSalesVp(@PathVariable("id") int id, 
+			@RequestBody SalesVp newsalesVp) {
+		try {
+			SalesVp salesVp = salesVpService.getBysalesVpId(id);
+			if(newsalesVp.getName() != null)
+				salesVp.setName(newsalesVp.getName());
+			if(newsalesVp.getEmail() != null)
+				salesVp.setEmail(newsalesVp.getEmail());
+			if(newsalesVp.getPhoneNumber() != null)
+				salesVp.setPhoneNumber(newsalesVp.getPhoneNumber());
+			
+			salesVp = salesVpService.insert(salesVp);
+			return ResponseEntity.ok().body(salesVp);
+		} catch (InvalidIdException e) {
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
 	
 //	@PostMapping("/onboard/{cid}")
 //	public ResponseEntity<String> onboardCompany(
