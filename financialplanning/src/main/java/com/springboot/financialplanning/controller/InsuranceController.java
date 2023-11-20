@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.enums.Category;
 import com.springboot.financialplanning.dto.InsuranceDto;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Company;
 import com.springboot.financialplanning.model.Insurance;
+import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.service.CompanyService;
 import com.springboot.financialplanning.service.InsuranceService;
 
@@ -189,5 +191,10 @@ public class InsuranceController {
 //			return ResponseEntity.badRequest().body(e.getMessage());
 //		}
 //	}
+	@GetMapping("/category/{category}")
+    public ResponseEntity<?> getInsurancesFundsByCategory(@PathVariable("category") Category category) {
+        List<Insurance> insurances = insuranceService.getInsurancesByCategory(category);
+		return ResponseEntity.ok().body(insurances);
+    }
 	
 }
