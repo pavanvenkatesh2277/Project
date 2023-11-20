@@ -40,6 +40,9 @@ public class InsuranceService {
 		insuranceRepository.delete(insurance);
 		
 	}
+	public List<Insurance> getInsurancesByCategory(Category category) {
+		return insuranceRepository.findByCategory(category);
+	}
 	 public List<Insurance> findByFundType(String fundType) {
 	        return insuranceRepository.findByFundType(fundType);
 	    }
