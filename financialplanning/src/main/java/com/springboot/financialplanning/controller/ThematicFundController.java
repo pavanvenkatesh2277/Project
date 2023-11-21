@@ -105,17 +105,11 @@ public class ThematicFundController {
 
 	@GetMapping("/category/{category}")
 	public ResponseEntity<?> getThematicFundByCategory(@PathVariable("category") Category category) {
-		try {
-			List<ThematicFund> ThematicFund = thematicFundService.getThematicFundByCategory(category);
+		
+			List<ThematicFund> ThematicFund = thematicFundService.getThematicFundsByCategory(category);
 			return ResponseEntity.ok().body(ThematicFund);
-		} catch (InvalidCategoryException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
-		}
+		 
 	}
 	
-//	@GetMapping("/search")
-//    public ResponseEntity<List<ThematicFund>> search(@RequestParam String keyword) {
-//        List<ThematicFund> searchResult = thematicFundService.search(keyword);
-//        return ResponseEntity.ok(searchResult);
-//    }
+
 }

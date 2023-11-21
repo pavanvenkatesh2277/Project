@@ -21,7 +21,6 @@ import com.springboot.financialplanning.dto.InsuranceDto;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Company;
 import com.springboot.financialplanning.model.Insurance;
-import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.service.CompanyService;
 import com.springboot.financialplanning.service.InsuranceService;
 

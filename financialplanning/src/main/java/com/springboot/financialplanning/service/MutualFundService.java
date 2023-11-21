@@ -40,19 +40,26 @@ public class MutualFundService {
 		mutualFundRepository.deleteById(cid);
 	}
 
+	
 	public List<MutualFund> getMutualFundsByCategory(Category category) {
 		return mutualFundRepository.findByCategory(category);
 	}
 
+	
 	public List<MutualFund> findByCompany(String Name) {
 	
 		return mutualFundRepository.findByCompany(Name);
 	}
 
+	
+	
 	public List<MutualFund> findByFundType(String fundType) {
 
 		return mutualFundRepository.findByFundType(fundType);
 	}
+	
+	
+	
 	public List<MutualFund> findByCategory(Category category) {
         return mutualFundRepository.findByCategory(category);
     }

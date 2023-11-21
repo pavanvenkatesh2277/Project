@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.enums.Category;
 import com.springboot.financialplanning.exception.InvalidCategoryException;
 import com.springboot.financialplanning.exception.InvalidIdException;
+import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.model.ThematicFund;
 import com.springboot.financialplanning.repository.ThematicFundRepository;
 
@@ -52,29 +53,11 @@ public class ThematicFundService {
 		thematicFundRepository.deleteById(cid);
 	}
 
-//	public List<ThematicFund> getThematicFundByCategory(String category) {
-//		return thematicFundRepository.findByCategory(category);
-//	}
-	
-	 public List<ThematicFund> getThematicFundByCategory(Category category) throws InvalidCategoryException {
-	        List<ThematicFund> thematicFunds = getAllThematicFunds();
 
-	        List<ThematicFund> filteredByCategory = thematicFunds.stream()
-	            .filter(tf -> tf.getCategory().equals(category))
-	            .collect(Collectors.toList());
-	        if (filteredByCategory.isEmpty()) {
-	            throw new InvalidCategoryException("No thematic funds found for category: " + category);
-	        }
+	public List<ThematicFund> getThematicFundsByCategory(Category category) {
+		return thematicFundRepository.findByCategory(category);
+	}
 
-	        return filteredByCategory;
-	    }
-//
-//	public List<ThematicFund> search(String keyword) {
-//		
-//		 return thematicFunds.stream()
-//	                .filter(thematicFunds -> thematicFunds.getName().toLowerCase().contains(keyword.toLowerCase()))
-//	                .collect(Collectors.toList());
-//	}
 
 	
 	public List<ThematicFund> findByFundType(String fundType) {
