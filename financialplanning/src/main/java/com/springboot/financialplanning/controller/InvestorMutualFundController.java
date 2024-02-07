@@ -108,7 +108,7 @@ public class InvestorMutualFundController {
 	
 
 	/* Delete InvestorMutualFund By Id */
-	@DeleteMapping("/delete/{mdid}")
+	@DeleteMapping("/InvestorMutualFund/delete/{mdid}")
 	public ResponseEntity<?> deleteMutualFundDetails(@PathVariable("mdid") int mdid) {
 		
 		try {
@@ -123,7 +123,7 @@ public class InvestorMutualFundController {
 		}
 	}
 	
-	/* Update InvestorMutualFund By Id */
+//	/* Update InvestorMutualFund By Id */
 //	@PutMapping("/updatemutualfund/{mdid}")  //:update: which record to update?   give me new value for update
 //	public ResponseEntity<?> updateInvestorMutualFund(@PathVariable("mdid") int mdid,
 //							@RequestBody InvestorMutualFundDto newInvestorMutualFund) {
@@ -137,10 +137,10 @@ public class InvestorMutualFundController {
 //			oldInvestorMutualFund = investorMutualFundService.insert(oldInvestorMutualFund); 
 //			return ResponseEntity.ok().body(oldInvestorMutualFund);
 //
-//		} catch (InvalidIdException e) {
+//	} catch (InvalidIdException e) {
 //			return ResponseEntity.badRequest().body(e.getMessage());
 //		}
 //	}
-//
+//I
 }
 

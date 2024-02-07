@@ -97,7 +97,7 @@ public class InvestorInsuranceController {
 	}
 	
 	/* Delete InvestorInsurance By Id */
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/investorinsurance/delete/{id}")
 	public ResponseEntity<?> deleteInsuranceDetails(@PathVariable("id") int id) {
 		
 		try {
