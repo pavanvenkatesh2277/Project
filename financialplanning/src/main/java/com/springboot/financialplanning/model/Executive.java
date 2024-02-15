@@ -95,6 +95,31 @@ public class Executive {
 		this.password = password;
 	}
 
+	public Executive(int id, String name, String email, String city, String contact, LocalDate dob, String username,
+			String password, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.city = city;
+		this.contact = contact;
+		this.dob = dob;
+		this.username = username;
+		this.password = password;
+		this.user = user;
+	}
+
+	public Executive() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Executive [id=" + id + ", name=" + name + ", email=" + email + ", city=" + city + ", contact=" + contact
+				+ ", dob=" + dob + ", username=" + username + ", password=" + password + ", user=" + user + "]";
+	}
+
 
 
 }

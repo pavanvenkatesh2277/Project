@@ -63,4 +63,9 @@ public class MutualFundService {
 	public List<MutualFund> findByCategory(Category category) {
         return mutualFundRepository.findByCategory(category);
     }
+
+	public List<MutualFund> getAllMutualFundsByCompanyId(int cid) {
+		
+		return mutualFundRepository.findAllById(cid);
+	}
 }

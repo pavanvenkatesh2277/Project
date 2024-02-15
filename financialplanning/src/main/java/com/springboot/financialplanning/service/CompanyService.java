@@ -43,5 +43,9 @@ public class CompanyService {
 //		Company company = getCompanyById(companyId);
 //		 saveCompany(company);
 //	}
+//	public List<Company> findAll() {
+//		List<Company> list = companyRepository.findAll();
+//		return list;
+//	}
 	
 }

@@ -23,5 +23,5 @@ public interface InsuranceRepository extends JpaRepository<Insurance, Integer>{
 	List<Insurance> findByFundType(String fundType);
 
 
-
+   
 }

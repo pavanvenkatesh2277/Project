@@ -73,4 +73,9 @@ public class ThematicFundService {
 		
 		return thematicFundRepository.findByCompany(Name);
 	}
+
+	public List<MutualFund> getAllThematicFundsByCompanyId(int cid) {
+		// TODO Auto-generated method stub
+		return thematicFundRepository.findAllById(cid);
+	}
 }

@@ -111,6 +111,34 @@ public class Insurance {
 	public void setCoverage(double coverage) {
 		this.coverage = coverage;
 	}
+
+	public Insurance(int id, String policyName, Category category, double premium, int policyTenure,
+			String claimSettlement, String description, String ageCreteria, double coverage) {
+		super();
+		this.id = id;
+		this.policyName = policyName;
+		this.category = category;
+		this.premium = premium;
+		this.policyTenure = policyTenure;
+		this.claimSettlement = claimSettlement;
+		this.description = description;
+		this.ageCreteria = ageCreteria;
+		this.coverage = coverage;
+		this.company = company;
+	}
+
+	public Insurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Insurance [id=" + id + ", policyName=" + policyName + ", category=" + category + ", premium=" + premium
+				+ ", policyTenure=" + policyTenure + ", claimSettlement=" + claimSettlement + ", description="
+				+ description + ", ageCreteria=" + ageCreteria + ", coverage=" + coverage + ", company=" + company
+				+ "]";
+	}
 	
 
 }

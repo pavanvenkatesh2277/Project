@@ -20,5 +20,7 @@ public interface MutualFundRepository extends JpaRepository<MutualFund, Integer>
 	@Query("select m from MutualFund m where m.Company.name=?1")
 	List<MutualFund> findByCompany(String Name);
 
+	List<MutualFund> findAllById(int id);
+
 
 }

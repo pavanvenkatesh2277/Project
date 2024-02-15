@@ -59,6 +59,13 @@ public class MutualFundController {
 		return list;
 	}
 	
+	@GetMapping("/all/{cid}")
+	public List<MutualFund>getAllMutualFundsByCompanyId(@PathVariable("cid")int cid){
+		List<MutualFund> list = mutualFundService.getAllMutualFundsByCompanyId(cid);
+		return list;
+	}
+	
+	
 	@GetMapping("/one/{cid}")
 	public ResponseEntity<?> getMutualFundById(@PathVariable("cid") int cid) {
 		try {

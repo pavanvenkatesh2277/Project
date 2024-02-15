@@ -78,5 +78,27 @@ public class Company {
 		this.contact = contact;
 	}
 
+	public Company(int id, String name, String email, String fundtype, String address, String contact, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.fundtype = fundtype;
+		this.address = address;
+		this.contact = contact;
+		this.user = user;
+	}
+
+	public Company() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Company [id=" + id + ", name=" + name + ", email=" + email + ", fundtype=" + fundtype + ", address="
+				+ address + ", contact=" + contact + ", user=" + user + "]";
+	}
+
 
 }

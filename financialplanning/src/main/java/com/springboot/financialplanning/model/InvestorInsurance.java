@@ -98,6 +98,31 @@ public class InvestorInsurance {
 	public void setInvestmentType(InvestmentType investmentType) {
 		this.investmentType = investmentType;
 	}
+
+	public InvestorInsurance(int id, LocalDate investmentDate, Double yearlyAmount, Double monthlyAmount,
+			LocalDate monthlyInvestmentDate, InvestmentType investmentType, Investor investor, Insurance insurance) {
+		super();
+		this.id = id;
+		this.investmentDate = investmentDate;
+		this.yearlyAmount = yearlyAmount;
+		this.monthlyAmount = monthlyAmount;
+		this.monthlyInvestmentDate = monthlyInvestmentDate;
+		this.investmentType = investmentType;
+		this.investor = investor;
+		this.insurance = insurance;
+	}
+
+	public InvestorInsurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "InvestorInsurance [id=" + id + ", investmentDate=" + investmentDate + ", yearlyAmount=" + yearlyAmount
+				+ ", monthlyAmount=" + monthlyAmount + ", monthlyInvestmentDate=" + monthlyInvestmentDate
+				+ ", investmentType=" + investmentType + ", investor=" + investor + ", insurance=" + insurance + "]";
+	}
 	
 	
 }

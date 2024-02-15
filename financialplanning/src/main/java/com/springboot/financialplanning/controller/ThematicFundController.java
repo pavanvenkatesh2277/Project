@@ -18,6 +18,7 @@ import com.springboot.financialplanning.dto.ThematicFundDto;
 import com.springboot.financialplanning.exception.InvalidCategoryException;
 import com.springboot.financialplanning.exception.InvalidIdException;
 import com.springboot.financialplanning.model.Company;
+import com.springboot.financialplanning.model.MutualFund;
 import com.springboot.financialplanning.model.ThematicFund;
 import com.springboot.financialplanning.service.CompanyService;
 import com.springboot.financialplanning.service.ThematicFundService;
@@ -51,6 +52,12 @@ public class ThematicFundController {
 		return list;
 	}
 
+	@GetMapping("/all/{cid}")
+	public List<MutualFund>getAllThematicFundsByCompanyId(@PathVariable("cid")int cid){
+		List<MutualFund> list = thematicFundService.getAllThematicFundsByCompanyId(cid);
+		return list;
+	}
+	
 	@GetMapping("/one/{cid}")
 	public ResponseEntity<?> getThematicFundById(@PathVariable("cid") int cid) {
 		try {

@@ -98,6 +98,32 @@ public class Investor {
 		this.contactNumber = contactNumber;
 	}
 
+	public Investor(int id, String name, String email, String city, LocalDate dob, String pancardNumber, String gender,
+			String contactNumber, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.city = city;
+		this.dob = dob;
+		this.pancardNumber = pancardNumber;
+		this.gender = gender;
+		this.contactNumber = contactNumber;
+		this.user = user;
+	}
+
+	public Investor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Investor [id=" + id + ", name=" + name + ", email=" + email + ", city=" + city + ", dob=" + dob
+				+ ", pancardNumber=" + pancardNumber + ", gender=" + gender + ", contactNumber=" + contactNumber
+				+ ", user=" + user + "]";
+	}
+
 	
 
 

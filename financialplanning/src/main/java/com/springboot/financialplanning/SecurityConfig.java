@@ -43,6 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {//ioc (inversi
 		.antMatchers("/salesvp/add","/salesvp/getone/{sid}").permitAll()
 		.antMatchers("/mutualfund/add/{cid}","/investormutualfunddetails/{iid}/{mfid}","/by-company","/by-category","/searchByCategory","/mdall","/delete/{mdid}","/category/{category}","/updatemutualfund/{mdid}","/filter").permitAll()
 		.antMatchers("/searchByCompanyName","/searchByFundType").permitAll()
+		.antMatchers("/lumpsum/calculate").permitAll()
+		.antMatchers("/sip/calculate","/generate-otp","/verify-otp").permitAll()
 		.anyRequest().authenticated()
 		.and().httpBasic()
 		.and()

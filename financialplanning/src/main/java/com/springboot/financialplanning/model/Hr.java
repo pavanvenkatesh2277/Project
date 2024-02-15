@@ -59,4 +59,27 @@ public class Hr {
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public Hr(int id, String name, String email, String phoneNumber, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.user = user;
+	}
+
+	
+	public Hr() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Hr [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", user="
+				+ user + "]";
+	}
+	
+	
 }
