@@ -5,12 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
-
-
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 @Entity
 public class Hr {
 	@Id

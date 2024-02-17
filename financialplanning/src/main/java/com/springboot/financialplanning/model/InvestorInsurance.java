@@ -11,12 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.enums.InvestmentType;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-
-
-
 @Entity
 public class InvestorInsurance {
 	@Id

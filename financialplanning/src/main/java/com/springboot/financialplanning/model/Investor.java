@@ -37,8 +37,7 @@ public class Investor {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Investor(int id, String firstname, String lastname, String email, String city, LocalDate dob,
-			String pancardNumber, String gender, String contactNumber, String accountNumber, String ifscCode) {
+	public Investor(int id, String firstname, String lastname, String email, String city, String pancardNumber, String gender, String contactNumber, String accountNumber) {
 		super();
 		this.id = id;
 		this.firstname = firstname;

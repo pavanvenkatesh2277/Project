@@ -9,13 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import com.enums.Category;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-
-
 
 @Entity
 public class Insurance {
@@ -47,8 +43,7 @@ public class Insurance {
 	public Insurance(int id, @NotEmpty(message = "PolicyName is mandatory") String policyName, Category category,
 			@NotEmpty(message = "premium is mandatory") double premium,
 			@NotEmpty(message = "policyTenure is mandatory") int policyTenure, String claimSettlement,
-			String description, @NotEmpty(message = "ageCreteria is mandatory") String ageCreteria, double coverage,
-			Company company) {
+			String description, @NotEmpty(message = "ageCreteria is mandatory") String ageCreteria, double coverage) {
 		super();
 		this.id = id;
 		this.policyName = policyName;

@@ -56,7 +56,7 @@ public class CompanyTest {
 	
 	@Test
 	void getAllCompaniesTest() {
-		List<com.springboot.financialplanning.model.Company> companyList=companyRepository.findAll();
+		List<Company> companyList=companyRepository.findAll();
 		companyList.forEach((p)->{
 			LOGGER.log(Level.INFO, "List of companies"+p);
 		});

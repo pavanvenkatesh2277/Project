@@ -7,12 +7,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import com.enums.Category;
 import com.enums.RickFactor;
-
-import jakarta.validation.constraints.NotEmpty;
-
 @Entity
 public class MutualFund {
 
