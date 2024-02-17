@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 
 import com.enums.Category;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 
 
 @Entity
@@ -19,19 +22,55 @@ public class Insurance {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@NotEmpty(message = "PolicyName is mandatory")
 	private String policyName;
 	@Enumerated(EnumType.STRING)
 	private Category category;
+	@NotEmpty(message = "premium is mandatory")
 	private double premium;
+	@NotEmpty(message = "policyTenure is mandatory")
 	private int policyTenure;
 	private String claimSettlement;
 	private String description;
+	@NotEmpty(message = "ageCreteria is mandatory")
 	private String ageCreteria;
 	private double coverage;
 	
 	@ManyToOne
 	private Company company;
-	
+
+	public Insurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Insurance(int id, @NotEmpty(message = "PolicyName is mandatory") String policyName, Category category,
+			@NotEmpty(message = "premium is mandatory") double premium,
+			@NotEmpty(message = "policyTenure is mandatory") int policyTenure, String claimSettlement,
+			String description, @NotEmpty(message = "ageCreteria is mandatory") String ageCreteria, double coverage,
+			Company company) {
+		super();
+		this.id = id;
+		this.policyName = policyName;
+		this.category = category;
+		this.premium = premium;
+		this.policyTenure = policyTenure;
+		this.claimSettlement = claimSettlement;
+		this.description = description;
+		this.ageCreteria = ageCreteria;
+		this.coverage = coverage;
+		this.company = company;
+	}
+
+	@Override
+	public String toString() {
+		return "Insurance [id=" + id + ", policyName=" + policyName + ", category=" + category + ", premium=" + premium
+				+ ", policyTenure=" + policyTenure + ", claimSettlement=" + claimSettlement + ", description="
+				+ description + ", ageCreteria=" + ageCreteria + ", coverage=" + coverage + ", company=" + company
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -72,14 +111,6 @@ public class Insurance {
 		this.policyTenure = policyTenure;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
-
-	public void setCompany(Company company) {
-		this.company = company;
-	}
-
 	public String getClaimSettlement() {
 		return claimSettlement;
 	}
@@ -112,33 +143,13 @@ public class Insurance {
 		this.coverage = coverage;
 	}
 
-	public Insurance(int id, String policyName, Category category, double premium, int policyTenure,
-			String claimSettlement, String description, String ageCreteria, double coverage) {
-		super();
-		this.id = id;
-		this.policyName = policyName;
-		this.category = category;
-		this.premium = premium;
-		this.policyTenure = policyTenure;
-		this.claimSettlement = claimSettlement;
-		this.description = description;
-		this.ageCreteria = ageCreteria;
-		this.coverage = coverage;
+	public Company getCompany() {
+		return company;
+	}
+
+	public void setCompany(Company company) {
 		this.company = company;
 	}
-
-	public Insurance() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Insurance [id=" + id + ", policyName=" + policyName + ", category=" + category + ", premium=" + premium
-				+ ", policyTenure=" + policyTenure + ", claimSettlement=" + claimSettlement + ", description="
-				+ description + ", ageCreteria=" + ageCreteria + ", coverage=" + coverage + ", company=" + company
-				+ "]";
-	}
 	
-
+	
 }

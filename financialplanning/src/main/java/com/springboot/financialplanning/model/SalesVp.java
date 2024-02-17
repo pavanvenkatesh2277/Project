@@ -6,44 +6,25 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 
 
 @Entity
 public class SalesVp {
-	@Override
-	public String toString() {
-		return "SalesVp [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", user="
-				+ user + ", getId()=" + getId() + ", getName()=" + getName() + ", getEmail()=" + getEmail()
-				+ ", getPhoneNumber()=" + getPhoneNumber() + ", getUser()=" + getUser() + ", getClass()=" + getClass()
-				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
-	}
-
-	public SalesVp() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	public SalesVp(int id, String name, String email, String phoneNumber, User user) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.user = user;
-	}
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@NotEmpty(message = "Name is mandatory")
 	private String name;
+	@NotEmpty(message = "Email is mandatory")
 	private String email;
+	@NotEmpty(message = "phoneNumber is mandatory")
+	@Size(min=10, max=10)
 	private String phoneNumber;
 	
-	@OneToOne
-	private User user;
-	
-	
-
 	public int getId() {
 		return id;
 	}
@@ -84,6 +65,33 @@ public class SalesVp {
 		this.user = user;
 	}
 
+	@Override
+	public String toString() {
+		return "SalesVp [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", user="
+				+ user + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
+
+	public SalesVp(int id, @NotEmpty(message = "Name is mandatory") String name,
+			@NotEmpty(message = "Email is mandatory") String email,
+			@NotEmpty(message = "phoneNumber is mandatory") @Size(min = 10, max = 10) String phoneNumber, User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.user = user;
+	}
+
+	public SalesVp() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@OneToOne
+	private User user;
 	
+	
+
 }
 

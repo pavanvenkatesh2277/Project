@@ -106,8 +106,10 @@ public class InvestorController {
 			Investor oldInvestor = investorService.getByInvestorId(iid);
 			if(newInvestor.getCity() != null)
 				oldInvestor.setCity(newInvestor.getCity());
-			if(newInvestor.getName() != null) 
-				oldInvestor.setName(newInvestor.getName()); 
+			if(newInvestor.getFirstname() != null) 
+				oldInvestor.setFirstname(newInvestor.getFirstname()); 
+			if(newInvestor.getLastname() != null) 
+				oldInvestor.setLastname(newInvestor.getLastname()); 
 			if(newInvestor.getEmail() != null) 
 				oldInvestor.setEmail(newInvestor.getEmail());
 			if(newInvestor.getDob() != null) 

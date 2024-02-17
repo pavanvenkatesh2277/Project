@@ -6,6 +6,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 
 
 @Entity
@@ -13,12 +16,38 @@ public class Hr {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	@NotBlank(message = "Name is mandatory")
 	private String name;
+	@NotBlank(message = "Email is mandatory")
 	private String email;
+	@Size(min=10, max=10)
 	private String phoneNumber;
 	
 	@OneToOne
 	private User user;
+
+	public Hr(int id, @NotBlank(message = "Name is mandatory") String name,
+			@NotBlank(message = "Email is mandatory") String email, @Size(min = 10, max = 10) String phoneNumber,
+			User user) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.user = user;
+	}
+
+	public Hr() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Hr [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", user="
+				+ user + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
+	}
 
 	public int getId() {
 		return id;
@@ -60,26 +89,6 @@ public class Hr {
 		this.user = user;
 	}
 
-	public Hr(int id, String name, String email, String phoneNumber, User user) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.user = user;
-	}
-
-	
-	public Hr() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "Hr [id=" + id + ", name=" + name + ", email=" + email + ", phoneNumber=" + phoneNumber + ", user="
-				+ user + "]";
-	}
 	
 	
 }

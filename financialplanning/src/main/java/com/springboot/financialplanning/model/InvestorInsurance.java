@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 
 import com.enums.InvestmentType;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+
 
 
 @Entity
@@ -35,28 +38,39 @@ public class InvestorInsurance {
 	@ManyToOne
 	private Insurance insurance;
 
+	public InvestorInsurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public InvestorInsurance(int id, LocalDate investmentDate, Double yearlyAmount, Double monthlyAmount,
+			LocalDate monthlyInvestmentDate, InvestmentType investmentType, Investor investor, Insurance insurance) {
+		super();
+		this.id = id;
+		this.investmentDate = investmentDate;
+		this.yearlyAmount = yearlyAmount;
+		this.monthlyAmount = monthlyAmount;
+		this.monthlyInvestmentDate = monthlyInvestmentDate;
+		this.investmentType = investmentType;
+		this.investor = investor;
+		this.insurance = insurance;
+	}
+
+	@Override
+	public String toString() {
+		return "InvestorInsurance [id=" + id + ", investmentDate=" + investmentDate + ", yearlyAmount=" + yearlyAmount
+				+ ", monthlyAmount=" + monthlyAmount + ", monthlyInvestmentDate=" + monthlyInvestmentDate
+				+ ", investmentType=" + investmentType + ", investor=" + investor + ", insurance=" + insurance
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
+
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public Investor getInvestor() {
-		return investor;
-	}
-
-	public void setInvestor(Investor investor) {
-		this.investor = investor;
-	}
-
-	public Insurance getInsurance() {
-		return insurance;
-	}
-
-	public void setInsurance(Insurance insurance) {
-		this.insurance = insurance;
 	}
 
 	public LocalDate getInvestmentDate() {
@@ -99,30 +113,22 @@ public class InvestorInsurance {
 		this.investmentType = investmentType;
 	}
 
-	public InvestorInsurance(int id, LocalDate investmentDate, Double yearlyAmount, Double monthlyAmount,
-			LocalDate monthlyInvestmentDate, InvestmentType investmentType, Investor investor, Insurance insurance) {
-		super();
-		this.id = id;
-		this.investmentDate = investmentDate;
-		this.yearlyAmount = yearlyAmount;
-		this.monthlyAmount = monthlyAmount;
-		this.monthlyInvestmentDate = monthlyInvestmentDate;
-		this.investmentType = investmentType;
+	public Investor getInvestor() {
+		return investor;
+	}
+
+	public void setInvestor(Investor investor) {
 		this.investor = investor;
+	}
+
+	public Insurance getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(Insurance insurance) {
 		this.insurance = insurance;
 	}
 
-	public InvestorInsurance() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "InvestorInsurance [id=" + id + ", investmentDate=" + investmentDate + ", yearlyAmount=" + yearlyAmount
-				+ ", monthlyAmount=" + monthlyAmount + ", monthlyInvestmentDate=" + monthlyInvestmentDate
-				+ ", investmentType=" + investmentType + ", investor=" + investor + ", insurance=" + insurance + "]";
-	}
 	
 	
 }
