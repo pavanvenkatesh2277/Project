@@ -6,15 +6,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 @Entity
 public class Hr {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@NotBlank(message = "Name is mandatory")
+	@NotEmpty(message = "Name is mandatory")
 	private String name;
-	@NotBlank(message = "Email is mandatory")
+	@NotEmpty(message = "Email is mandatory")
 	private String email;
 	@Size(min=10, max=10)
 	private String phoneNumber;
@@ -22,8 +23,13 @@ public class Hr {
 	@OneToOne
 	private User user;
 
-	public Hr(int id, @NotBlank(message = "Name is mandatory") String name,
-			@NotBlank(message = "Email is mandatory") String email, @Size(min = 10, max = 10) String phoneNumber,
+	public Hr() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Hr(int id, @NotEmpty(message = "Name is mandatory") String name,
+			@NotEmpty(message = "Email is mandatory") String email, @Size(min = 10, max = 10) String phoneNumber,
 			User user) {
 		super();
 		this.id = id;
@@ -31,11 +37,6 @@ public class Hr {
 		this.email = email;
 		this.phoneNumber = phoneNumber;
 		this.user = user;
-	}
-
-	public Hr() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
