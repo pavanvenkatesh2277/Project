@@ -21,10 +21,8 @@ public class ThematicFund {
 	private String fundName;
 	@Enumerated(EnumType.STRING)
 	private Category category;
-	@NotEmpty(message = "fundSize is mandatory")
 	private double fundSize;
 	@Enumerated(EnumType.STRING)
-	@NotEmpty(message = "returnFactor is mandatory")
 	private RickFactor riskFactor;
 	@NotEmpty(message = "returnFactor is mandatory")
 	private String returnFactor;
@@ -32,9 +30,7 @@ public class ThematicFund {
 	private String expectedReturns;
 	@NotEmpty(message = "lockingPeriod is mandatory")
 	private String lockingPeriod;
-	@NotEmpty(message = "minInvenstmentAmount is mandatory")
 	private double minInvenstmentAmount;
-	@NotEmpty(message = "navPrice is mandatory")
 	private double navPrice;
 	
 	@ManyToOne
@@ -46,13 +42,11 @@ public class ThematicFund {
 	}
 
 	public ThematicFund(int id, @NotEmpty(message = "FundName is mandatory") String fundName, Category category,
-			@NotEmpty(message = "fundSize is mandatory") double fundSize,
-			@NotEmpty(message = "returnFactor is mandatory") RickFactor riskFactor,
+			double fundSize, RickFactor riskFactor,
 			@NotEmpty(message = "returnFactor is mandatory") String returnFactor,
 			@NotEmpty(message = "expectedReturns is mandatory") String expectedReturns,
-			@NotEmpty(message = "lockingPeriod is mandatory") String lockingPeriod,
-			@NotEmpty(message = "minInvenstmentAmount is mandatory") double minInvenstmentAmount,
-			@NotEmpty(message = "navPrice is mandatory") double navPrice, Company company) {
+			@NotEmpty(message = "lockingPeriod is mandatory") String lockingPeriod, double minInvenstmentAmount,
+			double navPrice, Company company) {
 		super();
 		this.id = id;
 		this.fundName = fundName;
@@ -163,6 +157,6 @@ public class ThematicFund {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
-	
+
 	
 }

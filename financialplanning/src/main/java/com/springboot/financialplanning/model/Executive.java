@@ -24,9 +24,7 @@ public class Executive {
 	@Size(min=10, max=10)
 	private String contact;
 	private LocalDate dob;
-	@NotEmpty(message = "Username is mandatory")
 	private String username;
-	@NotEmpty(message = "Password is mandatory")
 	private String password;
 
 	@OneToOne
@@ -39,9 +37,8 @@ public class Executive {
 
 	public Executive(int id, @NotEmpty(message = "Name is mandatory") String name,
 			@NotEmpty(message = "Email is mandatory") String email, String city,
-			@Size(min = 10, max = 10) String contact, LocalDate dob,
-			@NotEmpty(message = "Username is mandatory") String username,
-			@NotEmpty(message = "Password is mandatory") String password, User user) {
+			@NotEmpty(message = "contact is mandatory") @Size(min = 10, max = 10) String contact, LocalDate dob,
+			String username, String password, User user) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -134,6 +131,5 @@ public class Executive {
 		this.user = user;
 	}
 
-	
 	
 }

@@ -2,6 +2,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -41,7 +43,7 @@ public class InvestorController {
 
 	/* Insert Investor */
 	@PostMapping("/add")
-	public Investor insertInvestor(@RequestBody Investor investor) {
+	public Investor insertInvestor(@Valid@RequestBody Investor investor) {
 		/*save user info in db*/
 		User user=investor.getUser();
 		String passwordPlain=user.getPassword();

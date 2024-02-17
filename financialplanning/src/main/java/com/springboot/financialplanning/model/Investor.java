@@ -36,7 +36,7 @@ public class Investor {
 	@Size(min=10, max=14)
 	private String accountNumber;
 	@NotEmpty(message = "ifscCode is mandatory")
-	@Size(min=11, max=11)
+	@Size(min=9, max=11)
 	private String ifscCode;
 	@OneToOne
 	private User user;

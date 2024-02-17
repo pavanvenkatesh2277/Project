@@ -22,9 +22,7 @@ public class Insurance {
 	private String policyName;
 	@Enumerated(EnumType.STRING)
 	private Category category;
-	@NotEmpty(message = "premium is mandatory")
 	private double premium;
-	@NotEmpty(message = "policyTenure is mandatory")
 	private int policyTenure;
 	private String claimSettlement;
 	private String description;
@@ -41,9 +39,8 @@ public class Insurance {
 	}
 
 	public Insurance(int id, @NotEmpty(message = "PolicyName is mandatory") String policyName, Category category,
-			@NotEmpty(message = "premium is mandatory") double premium,
-			@NotEmpty(message = "policyTenure is mandatory") int policyTenure, String claimSettlement,
-			String description, @NotEmpty(message = "ageCreteria is mandatory") String ageCreteria, double coverage) {
+			double premium, int policyTenure, String claimSettlement, String description,
+			@NotEmpty(message = "ageCreteria is mandatory") String ageCreteria, double coverage) {
 		super();
 		this.id = id;
 		this.policyName = policyName;
@@ -145,6 +142,7 @@ public class Insurance {
 	public void setCompany(Company company) {
 		this.company = company;
 	}
+
 	
 	
 }

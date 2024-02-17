@@ -2,6 +2,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +41,7 @@ public class InsuranceController {
 	
 	/*Insert Insurance by Company id*/
 	@PostMapping("/add/{cid}")
-	public ResponseEntity<?> insertInsurance(@PathVariable ("cid") int cid,@RequestBody Insurance insurance) {
+	public ResponseEntity<?> insertInsurance(@Valid@PathVariable ("cid") int cid,@RequestBody Insurance insurance) {
 			try {
 				/*fetch company from db by id*/
 				Company company = companyService.getCompanyById(cid);

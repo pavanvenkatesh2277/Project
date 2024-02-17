@@ -2,6 +2,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -35,7 +37,7 @@ public class CompanyController {
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping("/add")
-	public Company insertCompany(@RequestBody Company company) {
+	public Company insertCompany(@Valid@RequestBody Company company) {
 
 		/* save user info in database */
 		User user = company.getUser();

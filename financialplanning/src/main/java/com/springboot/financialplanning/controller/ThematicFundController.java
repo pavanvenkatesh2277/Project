@@ -2,6 +2,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,7 +36,7 @@ public class ThematicFundController {
 	private ThematicFundService thematicFundService;
 
 	@PostMapping("/add/{cid}")
-	public ResponseEntity<?> insertThematicFund(@PathVariable("cid") int cid, @RequestBody ThematicFund thematicFund) {
+	public ResponseEntity<?> insertThematicFund(@PathVariable("cid") int cid, @Valid@RequestBody ThematicFund thematicFund) {
 		try {
 
 			Company company = companyService.getCompanyById(cid);

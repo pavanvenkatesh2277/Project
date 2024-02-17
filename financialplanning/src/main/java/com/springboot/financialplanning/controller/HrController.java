@@ -1,5 +1,7 @@
 package com.springboot.financialplanning.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,7 +39,7 @@ public class HrController {
 	
 	/*Insert HR */
 	@PostMapping("/add")
-	public Hr insertHr(@RequestBody Hr hr) {
+	public Hr insertHr(@Valid@RequestBody Hr hr) {
 		/*save user info in db*/
 		User user=hr.getUser();
 		String passwordPlain=user.getPassword();

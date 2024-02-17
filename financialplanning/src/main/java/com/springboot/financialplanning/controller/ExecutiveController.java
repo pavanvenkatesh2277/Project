@@ -2,6 +2,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -38,7 +40,7 @@ public class ExecutiveController {
 	private PasswordEncoder passwordEncoder;
 
 	@PostMapping("/add")
-	public Executive insertExecutive(@RequestBody Executive executive) {
+	public Executive insertExecutive(@Valid@RequestBody Executive executive) {
 		/* save user info in db */
 		User user = executive.getUser();
 		String passwordPlain = user.getPassword();

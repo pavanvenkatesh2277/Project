@@ -2,6 +2,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +41,7 @@ public class InvestorThematicFundController {
 	/* Insert InvestorThematicFund Details By InvestorId and ThematicFundId */
 	@PostMapping("/investorthematicfund/add/{iid}/{tfid}")
 	public ResponseEntity<?> thematicfund(@PathVariable("iid") int iid, @PathVariable("tfid") int tfid,
-			@RequestBody InvestorThematicFund investorThematicFund) {
+			@Valid@RequestBody InvestorThematicFund investorThematicFund) {
 		try {
 			Investor investor = investorService.getByInvestorId(iid);
 			ThematicFund thematicFund = thematicFundService.getByid(tfid);

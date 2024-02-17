@@ -21,7 +21,6 @@ public class MutualFund {
 	private String fundName;
 	@Enumerated(EnumType.STRING)
 	private Category category;
-	@NotEmpty(message = "fundSize is mandatory")
 	private double fundSize;
 	@Enumerated(EnumType.STRING)
 	private RickFactor riskFactor;
@@ -31,9 +30,7 @@ public class MutualFund {
 	private String expectedReturns;
 	@NotEmpty(message = "lockingPeriod is mandatory")
 	private String lockingPeriod;
-	@NotEmpty(message = "minInvenstmentAmount is mandatory")
 	private double minInvenstmentAmount;
-	@NotEmpty(message = "navPrice is mandatory")
 	private double navPrice;
 	
 	
@@ -48,13 +45,11 @@ public class MutualFund {
 
 
 	public MutualFund(int id, @NotEmpty(message = "Name is mandatory") String fundName, Category category,
-			@NotEmpty(message = "fundSize is mandatory") double fundSize, RickFactor riskFactor,
+			double fundSize, RickFactor riskFactor,
 			@NotEmpty(message = "returnFactor is mandatory") String returnFactor,
 			@NotEmpty(message = "expectedReturns is mandatory") String expectedReturns,
-			@NotEmpty(message = "lockingPeriod is mandatory") String lockingPeriod,
-			@NotEmpty(message = "minInvenstmentAmount is mandatory") double minInvenstmentAmount,
-			@NotEmpty(message = "navPrice is mandatory") double navPrice,
-			com.springboot.financialplanning.model.Company company) {
+			@NotEmpty(message = "lockingPeriod is mandatory") String lockingPeriod, double minInvenstmentAmount,
+			double navPrice, com.springboot.financialplanning.model.Company company) {
 		super();
 		this.id = id;
 		this.fundName = fundName;
@@ -189,6 +184,6 @@ public class MutualFund {
 		Company = company;
 	}
 
-	
+
 
 }

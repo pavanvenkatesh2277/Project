@@ -1,5 +1,7 @@
 package com.springboot.financialplanning.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -40,7 +42,7 @@ public class SalesVpController {
 	private CompanyService companyService;
 	
 	@PostMapping("/add")
-	public SalesVp insertSalesVp(@RequestBody SalesVp salesVp) {
+	public SalesVp insertSalesVp(@Valid@RequestBody SalesVp salesVp) {
 		/*save user info in db*/
 		User user=salesVp.getUser();
 		String passwordPlain=user.getPassword();
@@ -85,16 +87,5 @@ public class SalesVpController {
 		}
 	}
 	
-//	@PostMapping("/onboard/{cid}")
-//	public ResponseEntity<String> onboardCompany(
-//           
-//            @PathVariable("companyId") int companyId) {
-//        try {
-//            companyService.onboardCompany(companyId);
-//            return ResponseEntity.ok("Company with ID: " + companyId + " has been onboarded  " );
-//        } catch (InvalidIdException e) {
-//            return ResponseEntity.badRequest().body(e.getMessage());
-//        }
-//    }
 
 }

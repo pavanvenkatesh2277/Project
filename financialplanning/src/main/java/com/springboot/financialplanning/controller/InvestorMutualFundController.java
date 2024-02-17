@@ -3,6 +3,8 @@ package com.springboot.financialplanning.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -42,7 +44,7 @@ public class InvestorMutualFundController {
 	/* Insert InvestorMutualFund Details By InvestorId and MutualFundId */
 	@PostMapping("/investormutualfund/add/{iid}/{mfid}")
 	public ResponseEntity<?> mutualfund(@PathVariable("iid") int iid, @PathVariable("mfid") int mfid,
-			@RequestBody InvestorMutualFund investorMutualFund) {
+			@Valid@RequestBody InvestorMutualFund investorMutualFund) {
 		try {
 			/*fetch investor by id*/
 			Investor investor = investorService.getByInvestorId(iid);
